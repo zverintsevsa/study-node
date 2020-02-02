@@ -1,0 +1,16 @@
+version: '3'
+services: 
+  node:
+    build:
+      context: ./node
+      args:
+        UID: $UID
+        GID: $GID
+    container_name: node
+    user: node
+    working_dir: /home/node/app
+    volumes:
+      - ./src:/home/node/app
+    ports:
+      - '3000:3000'
+    command: 'npm start'
